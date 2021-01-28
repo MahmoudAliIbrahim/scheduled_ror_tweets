@@ -1,19 +1,16 @@
-<h1>Sign up</h1>
+<h1> Update Password </h1>
 
-<%= form_with model: @user, url: sign_up_path do |form| %>
-<% if form.object.errors.any? %>
+<%= form_with model: @user, url: password_reset_update_path(token: params[:token]) do |form|%>
+<% if @user.errors.any? %>
 <div class="alert alert-danger">
-    <% form.object.errors.full_messages.each do |message| %>
+    <% @user.errors.full_messages.each do |message| %>
     <div>
         <%= message %>
     </div>
     <% end %>
 </div>
 <%end%>
-<div class="mb-3">
-    <%= form.label :email %>
-    <%= form.text_field :email, class: "form-control", placeholder: "mahmoud@test.com" %>
-</div>
+
 <div class="mb-3">
     <%= form.label :password %>
     <%= form.password_field :password, class: "form-control", placeholder: "password" %>
@@ -22,8 +19,8 @@
     <%= form.label :password_confirmation %>
     <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password" %>
 </div>
-<div class="mb-3">
-    <%= form.submit "Sign up", class: "btn btn-primary" %>
-</div>
 
+<div class="mb-3">
+    <%= form.submit "Reset Password", class: "btn btn-primary" %>
+</div>
 <% end %>
