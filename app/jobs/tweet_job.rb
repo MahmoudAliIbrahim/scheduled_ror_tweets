@@ -4,7 +4,7 @@ class TweetJob < ApplicationJob
   def perform(tweet)
     return if tweet.published?
 
-    retrun if tweet.publish_at > Time.Current
+    retrun if tweet.publish_at > Time.current
 
     tweet.publish_to_twitter!
   end
